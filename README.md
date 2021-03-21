@@ -3,7 +3,7 @@
 Simple lexer in golang. It uses:
 
 - regular expressions to tokensize the strings
-- greedy to find the longest possible token
+- greedy approach to find the longest possible token
 
 ```go
 var lexer func(text string) []Token = NewLexer().

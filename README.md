@@ -7,10 +7,10 @@ Simple lexer in golang. It uses:
 
 ```go
 var lexer func(text string) ([]Token, error) = NewLexer().
-    add(Token{Name: "NUMBER", Pattern: "^[0-9]+$"}).
-    add(Token{Name: "PLUS", Pattern: "^\\+$"}).
-    add(Token{Name: "SPACE", Pattern: "^\\s+$", Ignore: true}).
-    build()
+    Add(Token{Name: "NUMBER", Pattern: "^[0-9]+$"}).
+    Add(Token{Name: "PLUS", Pattern: "^\\+$"}).
+    Add(Token{Name: "SPACE", Pattern: "^\\s+$", Ignore: true}).
+    Build()
     
 str := "1 + 2"
 tokens := lexer(str)  // should return 3 tokens

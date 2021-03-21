@@ -1,4 +1,4 @@
-package src
+package go_lexer
 
 import (
 	"fmt"
@@ -23,12 +23,12 @@ func NewLexer() *LexerConfig {
 	return &l
 }
 
-func (conf *LexerConfig) add(token Token) *LexerConfig {
+func (conf *LexerConfig) Add(token Token) *LexerConfig {
 	conf.Tokens = append(conf.Tokens, token)
 	return conf
 }
 
-func (conf *LexerConfig) build() func(text string) ([]Token, error) {
+func (conf *LexerConfig) Build() func(text string) ([]Token, error) {
 	return func(text string) ([]Token, error) {
 		var buffer string
 		tokens := make([]Token, 0)

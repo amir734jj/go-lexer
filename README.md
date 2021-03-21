@@ -10,5 +10,6 @@ var lexer func(text string) []Token = NewLexer().
     add(Token{Name: "MULTIPLY", Pattern: "^\\*$"}).
     add(Token{Name: "DIVIDE", Pattern: "^\\/$"}).
     add(Token{Name: "EXPONENT", Pattern: "^\\^$"}).
+    add(Token{Name: "SPACE", Pattern: "^\\s+$", Ignore: true}).
     build()
 ```

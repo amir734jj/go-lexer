@@ -13,13 +13,14 @@ func init() {
 		add(Token{Name: "MULTIPLY", Pattern: "^\\*$"}).
 		add(Token{Name: "DIVIDE", Pattern: "^\\/$"}).
 		add(Token{Name: "EXPONENT", Pattern: "^\\^$"}).
+		add(Token{Name: "SPACE", Pattern: "^\\s+$", Ignore: true}).
 		build()
 
 	return
 }
 
 func TestPlus(t *testing.T) {
-	str := "1+2"
+	str := "1 + 2"
 	tokens := lexer(str)
 
 	if len(tokens) != 3 || tokens[0].Name != "NUMBER" || tokens[1].Name != "PLUS" || tokens[2].Name != "NUMBER" {

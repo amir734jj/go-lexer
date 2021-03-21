@@ -2,7 +2,7 @@ package src
 
 import "testing"
 
-var lexer func(text string) []Token
+var lexer func(text string) ([]Token, error)
 
 func init() {
 	/* load test data */
@@ -21,7 +21,11 @@ func init() {
 
 func TestPlus(t *testing.T) {
 	str := "1 + 2"
-	tokens := lexer(str)
+	tokens, err := lexer(str)
+
+	if err != nil {
+		t.Error(err.Error())
+	}
 
 	if len(tokens) != 3 || tokens[0].Name != "NUMBER" || tokens[1].Name != "PLUS" || tokens[2].Name != "NUMBER" {
 		t.Errorf("Test failed for %s", str)

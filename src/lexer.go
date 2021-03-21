@@ -28,8 +28,8 @@ func (conf *LexerConfig) add(token Token) *LexerConfig {
 	return conf
 }
 
-func (conf *LexerConfig) build() func(text string) []Token {
-	return func(text string) []Token {
+func (conf *LexerConfig) build() func(text string) ([]Token, error) {
+	return func(text string) ([]Token, error) {
 		var buffer string
 		tokens := make([]Token, 0)
 		for i := 0; i < len(text); i++ {
@@ -47,8 +47,8 @@ func (conf *LexerConfig) build() func(text string) []Token {
 			}
 
 			if len(matches) == 0 {
-				_ = fmt.Errorf("failed to find any match: %s", buffer)
-				break
+				err := fmt.Errorf("failed to find any match: %s", buffer)
+				return nil, err
 			} else {
 				var currentMatch = Token{}
 				for _, token := range matches {
@@ -78,6 +78,6 @@ func (conf *LexerConfig) build() func(text string) []Token {
 			}
 		}
 
-		return clones
+		return clones, nil
 	}
 }

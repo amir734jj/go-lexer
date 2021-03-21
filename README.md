@@ -12,6 +12,6 @@ var lexer func(text string) ([]Token, error) = NewLexer().
     add(Token{Name: "SPACE", Pattern: "^\\s+$", Ignore: true}).
     build()
     
-    str := "1 + 2"
-    tokens := lexer(str)  // should return 3 tokens
+str := "1 + 2"
+tokens := lexer(str)  // should return 3 tokens
 ```
